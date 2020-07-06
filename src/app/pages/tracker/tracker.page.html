@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-button>
+    <ion-title>Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addCashflow()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list #slidingList>
+    <ion-item-sliding *ngFor="let transactions of transactions; let i = index">
+      <ion-item>
+        <ion-icon [name]="transactions.category.icon" slot="start" class="category-icon"></ion-icon>
+
+        <ion-label>
+          <h2>{{transactions.title}}</h2>
+          <P>
+            {{transactions.created_at | date:'MMM dd'}}
+          </P>
+        </ion-label>
+        <ion-text slot="end" [color]="transactions.type ? 'success' : 'danger'">
+          {{transactions.type ? '+' : '-'}}{{transactions.amount | currency:selected_Currency:'symbol'}}
+        </ion-text>
+      </ion-item>
+
+      <ion-item-options slide="end">
+        <ion-item-option (click)="removeTransaction(i)" color="danger">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="ion-text-center">
+    <p>{{cashflow | currency:selected_Currency:'symbol'}}</p>
+  </ion-toolbar>
+</ion-footer>

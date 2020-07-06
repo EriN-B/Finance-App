@@ -9,10 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {IonicStorageModule} from '@ionic/storage';
+import { CashFLowModalPage } from './pages/cash-flow-modal/cash-flow-modal.page';
+import { CashFLowModalPageModule } from './pages/cash-flow-modal/cash-flow-modal.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,IonicStorageModule.forRoot(),CashFLowModalPageModule],
   providers: [
     StatusBar,
     SplashScreen,

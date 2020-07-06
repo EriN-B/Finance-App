@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Currency
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group [(ngModel)]="currency">
+
+          <ion-item>
+            <ion-label>Euro</ion-label>
+            <ion-radio slot="start" value="eur" checked></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Dollar</ion-label>
+            <ion-radio slot="start" value="usd"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Pound</ion-label>
+            <ion-radio slot="start" value="gbp"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button expand="full" (click)="updateCurrency()">
+        Update
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Clear Data
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Remove all data?
+      <ion-button expand="full" color="danger" (click)="clearData()">
+        Clear Data
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

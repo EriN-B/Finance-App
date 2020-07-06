@@ -1,0 +1,66 @@
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        New Transaction
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-segment type="number" [(ngModel)]="transaction.type">
+          <ion-segment-button type="number" value="0">
+            <ion-label>Expense</ion-label>
+          </ion-segment-button>
+          <ion-segment-button type="number" value="1">
+            <ion-label>Income</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Amount</ion-label>
+        <ion-input [(ngModel)]="transaction.amount" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input [(ngModel)]="transaction.title" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-datetime display-format="MM/DD/YYYY" picker-format="MM DD YYYY" [(ngModel)]="created_at"></ion-datetime>
+      </ion-item>
+  
+      <ion-item *ngIf="transaction.type == 0">
+          <ion-label position="stacked">Category</ion-label>
+          <ion-row no-padding>
+          <ion-col size="4" *ngFor="let cat of categories" >
+            <ion-button expand="block" fill="clear"
+            (click)="transaction.category = cat" 
+            [color]="transaction.category == cat ? 'primary' : 'medium'">
+              <ion-icon slot="icon-only" [name]="cat.icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+
+      <ion-row class="ion-no-padding">
+          <ion-col size="6">
+            <ion-button expand="full" color="danger" (click)="close()">
+              <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="full" color="success" (click)="addTransaction()" [disabled]="transaction.amount==0">
+              <ion-icon name="checkmark" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

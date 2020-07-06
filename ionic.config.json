@@ -1,5 +1,7 @@
 {
   "name": "Finance_Tracker",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
